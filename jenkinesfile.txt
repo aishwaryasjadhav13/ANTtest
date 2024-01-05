@@ -1,14 +1,19 @@
 pipeline {
     agent any
- 
+    
     stages {
-        stage('ANT test') {
+        stage('Run Ant Build') {
             steps {
-                // Access the declared variables in the steps
-                echo 'testing'
-                sh 'ant -version'
-                sh 'ant retrieveUnpackaged'
+                script {
+                    def antCommand = 'ant retrieveUnpackaged'
+                    def antOutput = sh(script: antCommand, returnStdout: true).trim()
+                    echo "Ant Build Output: ${antOutput}"
+ 
+                    // Add additional processing or actions based on the Ant build output
+                }
             }
         }
+        // Add more stages as needed
     }
+    // Add post-build actions or other configurations
 }
