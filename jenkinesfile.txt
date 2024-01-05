@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+ 
+    stages {
+        stage('ANT test') {
+            steps {
+                // Access the declared variables in the steps
+                echo 'testing'
+                sh 'ant -version'
+            }
+        }
+    }
+}
